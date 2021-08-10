@@ -5,6 +5,8 @@ const BASE_URL = "https://test.api.amadeus.com";
 const API_KEY = "pWedLWD5wiKGOIeDT8jUlUkILIDKvbYg";
 const API_SECRET = "zs4nmLEIM3z0AmnS";
 
+const max_retries = 10;
+
 let TOKEN = {
   is_expired: () => {
     return (
@@ -15,9 +17,8 @@ let TOKEN = {
 };
 
 //manually tested, TOKEN good  ? return TOKEN : (retrieve TOKEN and return TOKEN)
-//if error, logs it and retries immediatly
-export const getToken = async () => {
-  let retry = false;
+//if error, logs it and retries immediatly for max_retries times
+export const getToken = async (retry = 0, maxRetries = max_retries) => {
   if (!TOKEN.value || TOKEN.is_expired()) {
     return axios
       .post(
@@ -26,7 +27,7 @@ export const getToken = async () => {
       )
       .catch((error) => {
         console.log(error);
-        retry = true;
+        retry += 1;
       })
       .then((res) => {
         return (TOKEN = {
@@ -37,8 +38,10 @@ export const getToken = async () => {
         });
       })
       .finally(() => {
-        if (retry) {
-          return getToken();
+        if (retry && retry <= maxRetries) {
+          return getToken(retry, maxRetries);
+        } else {
+          return;
         }
       });
   } else {
