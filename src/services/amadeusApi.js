@@ -14,9 +14,8 @@ let TOKEN = {
   },
 };
 
-
 //manually tested, TOKEN good  ? return TOKEN : (retrieve TOKEN and return TOKEN)
-//if error, retries immediatly
+//if error, logs it and retries immediatly
 export const getToken = async () => {
   let retry = false;
   if (!TOKEN.value || TOKEN.is_expired()) {
@@ -86,12 +85,30 @@ export async function searchFlights(trip) {
   });
 }
 
+//manually tested, validate TOKEN then get and return flight delay predictions, if error throws it
+
+/* exampleFlight: {
+    originLocationCode: "MXP",
+    departureDate: "2021-08-28",
+    departureTime: "12:50:00",
+    destinationLocationCode: "AMS",
+    arrivalDate: "2021-08-28",
+    arrivalTime: "14:45:00",
+    aircraftCode: "E90",
+    carrierCode: "KL",
+    flightNumber: "1630",
+    duration: "PT1H55M",
+  },
+*/
 export async function getPrediction(flight) {
   return getToken().then(() => {
     return axios
       .get(BASE_URL + "/v1/travel/predictions/flight-delay", {
         params: flight,
         headers: { Authorization: `Bearer ${TOKEN.value}` },
+      })
+      .catch((error) => {
+        throw error;
       })
       .then((res) => {
         return res.data;
