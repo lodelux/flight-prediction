@@ -6,7 +6,7 @@
     <input
       :="$attrs"
       :value="modelValue"
-      @input="this.$emit('update:modelValue', $event.target.value)"
+      @change="this.$emit('update:modelValue', $event.target.value)"
       class="
         block
         mt-1
