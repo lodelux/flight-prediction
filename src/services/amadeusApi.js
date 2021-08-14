@@ -49,39 +49,16 @@ export const getToken = async (retry = 0, maxRetries = max_retries) => {
   }
 };
 
-export async function searchFlights(trip) {
+export async function searchFlight(flight) {
   return getToken().then(() => {
     return axios
-      .post(
-        BASE_URL + "/v2/shopping/flight-offers",
-        {
-          currencyCode: "EUR",
-          originDestinations: [
-            {
-              id: "1",
-              originLocationCode: trip.departureCode,
-              destinationLocationCode: trip.arrivalCode,
-              departureDateTimeRange: {
-                date: trip.departureDate,
-                dateWindow: "I3D",
-              },
-            },
-          ],
-          travelers: [
-            {
-              id: "1",
-              travelerType: "ADULT",
-            },
-          ],
-          sources: ["GDS"],
-          searchCriteria: {
-            maxFlightOffers: 5,
-          },
-        },
-        {
-          headers: { Authorization: `Bearer ${TOKEN.value}` },
-        }
-      )
+      .get(BASE_URL + "/v2/schedule/flights", {
+        headers: { Authorization: `Bearer ${TOKEN.value}` },
+        params: flight,
+      })
+      .catch((err) => {
+        throw err;
+      })
       .then((res) => {
         return res.data;
       });
