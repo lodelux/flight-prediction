@@ -12,6 +12,7 @@
         mt-1
         w-full
         lg:w-40
+        md:w-40
         rounded-2xl
         text-center
         bg-transparent

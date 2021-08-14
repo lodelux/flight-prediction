@@ -1,7 +1,7 @@
 <template>
   <div :="$attrs">
     <form class="p-4">
-      <div class="flex gap-3">
+      <div class="flex gap-3 justify-center">
         <base-input type="text" placeholder="AZ" v-model="searched.carrierCode"
           >Carrier Code</base-input
         >
@@ -12,7 +12,7 @@
           >Flight Number</base-input
         >
       </div>
-      <div class="mt-5 flex gap-3">
+      <div class="mt-5 flex gap-3 justify-center flex-initial">
         <base-input
           type="date"
           placeholder="2021-08-28"
@@ -20,7 +20,7 @@
           >Departure Date</base-input
         >
         <!-- v-model="searched.operationalSuffix" -->
-        <base-input type="text">Delayed Code</base-input>
+        <base-input type="text">Delay Code</base-input>
       </div>
     </form>
   </div>
@@ -28,7 +28,6 @@
 
 <script>
 import BaseInput from "./BaseInput.vue";
-import { searchFlight } from "../services/amadeusApi.js";
 export default {
   components: { BaseInput },
   data() {
@@ -51,15 +50,7 @@ export default {
           }
         }
         if (filled) {
-          console.log("form Filled");
-
-          searchFlight(_searched)
-            .catch((err) => {
-              console.log(err);
-            })
-            .then((res) => {
-              console.log(res);
-            });
+          this.$store.dispatch("getFlight", _searched);
         }
       },
       deep: true,

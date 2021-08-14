@@ -49,6 +49,15 @@ export const getToken = async (retry = 0, maxRetries = max_retries) => {
   }
 };
 
+/* exampleFlight: {      
+    carrierCode: "",
+    flightNumber: "",
+    scheduledDepartureDate: "",
+     operationalSuffix: "" (optional),
+  }, 
+*/
+
+//validate token or get new one then search for flight and return an error or the response data, MANUALLY TESTED
 export async function searchFlight(flight) {
   return getToken().then(() => {
     return axios
