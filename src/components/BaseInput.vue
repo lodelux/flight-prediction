@@ -16,6 +16,7 @@
         rounded-2xl
         text-center
         bg-transparent
+        border-2
         border-purple-900
       "
     />
