@@ -89,7 +89,7 @@ export async function searchFlight(flight) {
     duration: "PT1H55M",
   },
 */
-export async function getPrediction(flight) {
+export async function searchPrediction(flight) {
   return getToken().then(() => {
     return axios
       .get(BASE_URL + "/v1/travel/predictions/flight-delay", {
