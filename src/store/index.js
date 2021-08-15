@@ -20,12 +20,8 @@ export default createStore({
       commit("SET_STATE", { key: "error", value: "" });
       commit("SET_STATE", { key: "loading", value: true });
       searchFlight(_searched)
-        .catch(() => {
-          commit("SET_STATE", { key: "loading", value: false });
-          commit("SET_STATE", { key: "error", value: "flight" });
-          return;
-        })
         .then((res) => {
+          console.log(res);
           if (res.meta.count) {
             res = res.data;
             commit("SET_STATE", {
@@ -57,6 +53,11 @@ export default createStore({
             commit("SET_STATE", { key: "loading", value: false });
             commit("SET_STATE", { key: "error", value: "no flight" });
           }
+        })
+        .catch(() => {
+          commit("SET_STATE", { key: "loading", value: false });
+          commit("SET_STATE", { key: "error", value: "flight" });
+          return;
         });
     },
     getPredictions({ commit }, _flight) {
@@ -65,11 +66,6 @@ export default createStore({
 
       if (_flight != "") {
         searchPrediction(_flight)
-          .catch(() => {
-            commit("SET_STATE", { key: "loading", value: false });
-            commit("SET_STATE", { key: "error", value: "prediction" });
-            return;
-          })
           .then((res) => {
             if (res.meta.count) {
               for (let pr of res.data) {
@@ -83,6 +79,11 @@ export default createStore({
               commit("SET_STATE", { key: "loading", value: false });
               commit("SET_STATE", { key: "error", value: "no prediction" });
             }
+          })
+          .catch(() => {
+            commit("SET_STATE", { key: "loading", value: false });
+            commit("SET_STATE", { key: "error", value: "prediction" });
+            return;
           });
       }
     },

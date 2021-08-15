@@ -1,21 +1,33 @@
 <template>
-  <div :="$attrs">
+  <div class="mx-2 w-full mt-7 sm:m-0 sm:w-5/12">
+    <div v-if="loading" class="w-full flex justify-center mt-10">
+      <base-loading class="w-14" />
+    </div>
     <predictions
+      v-if="predictions[0]"
       :flight="flight"
       :predictions="predictions"
-      :error="error"
-      :loading="loading"
-    >
-    </predictions>
+    />
+    <base-msg
+      v-if="!predictions[0] && error && !close"
+      :message="errorMessage"
+      @close="
+        () => {
+          this.close = true;
+        }
+      "
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import Predictions from "./Predictions.vue";
+import BaseLoading from "./BaseLoading.vue";
+import BaseMsg from "./BaseMsg.vue";
 
 export default {
-  components: { Predictions },
+  components: { Predictions, BaseLoading, BaseMsg },
   // data() {
   //   return {
   //     flight: {
@@ -56,8 +68,31 @@ export default {
   //     error: "no prediction",
   //   };
   // },
+  data() {
+    return {
+      close: false,
+    };
+  },
   computed: {
     ...mapState(["flight", "error", "loading", "predictions"]),
+    errorMessage: function () {
+      switch (this.error) {
+        case "flight":
+          return "an error has occurred while searching for your flight, check if your input is correct or try again later ";
+
+        case "prediction":
+          return "an error has occurred while trying to get predictions for your flight, check if your input is correct or try again later pls";
+
+        case "no flight":
+          return "no flight found with specified data, please note that not all flights are supported yet";
+
+        case "no prediction":
+          return "no prediction found with specified flight, please note that not all flights are supported yet";
+
+        default:
+          return "An unexpected error has occured, sorry...";
+      }
+    },
   },
   watch: {
     flight: {
@@ -65,6 +100,9 @@ export default {
         this.$store.dispatch("getPredictions", flight);
       },
       deep: true,
+    },
+    error: function () {
+      this.close = false;
     },
   },
 };

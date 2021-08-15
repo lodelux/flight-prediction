@@ -1,5 +1,5 @@
 <template>
-  <div :="$attrs">
+  <div class="bg-gray-900 rounded-2xl shadow-2xl mx-2">
     <form class="p-4">
       <div class="block mb-6 font-bold text-center text-xl">
         Enter your flight data

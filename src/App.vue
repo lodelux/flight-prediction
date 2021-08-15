@@ -17,4 +17,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.slide-down-enter-from {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.slide-down-enter-active {
+  transition: all 1s ease-out;
+}
 </style>
