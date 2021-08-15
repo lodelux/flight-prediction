@@ -21,7 +21,6 @@ export default createStore({
       commit("SET_STATE", { key: "loading", value: true });
       searchFlight(_searched)
         .then((res) => {
-          console.log(res);
           if (res.meta.count) {
             res = res.data;
             commit("SET_STATE", {
