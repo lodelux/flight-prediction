@@ -72,6 +72,11 @@ export default createStore({
           })
           .then((res) => {
             if (res.meta.count) {
+              for (let pr of res.data) {
+                pr.probability = Math.round(pr.probability * 100);
+                pr.result = pr.result.split("_").join(" ").toLowerCase();
+              }
+
               commit("SET_STATE", { key: "loading", value: false });
               commit("SET_STATE", { key: "predictions", value: res.data });
             } else {
