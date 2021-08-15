@@ -5,25 +5,23 @@
       :key="link.name"
       :to="{ name: link.viewName }"
     >
-        <button
-          class="
-            p-2
-            rounded-lg
-            hover:bg-gray-600 hover:bg-opacity-50
-            text-lg
-            font-sans
-          "
-          :class="link.name === selected ? 'font-semibold' : null"
-        >
-          {{ link.name }}
-        </button>
+      <button
+        class="
+          p-2
+          rounded-lg
+          hover:bg-gray-600 hover:bg-opacity-50
+          text-lg
+          font-sans
+        "
+        :class="link.name === selected ? 'font-semibold' : null"
+      >
+        {{ link.name }}
+      </button>
     </router-link>
   </div>
 </template>
 
-<style>
-</style>
-
+<style></style>
 
 <script>
 export default {
@@ -48,4 +46,3 @@ export default {
   },
 };
 </script>
-
