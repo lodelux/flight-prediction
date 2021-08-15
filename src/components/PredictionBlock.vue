@@ -57,16 +57,7 @@ export default {
   //   };
   // },
   computed: {
-    ...mapState(["flight", "error", "loading"]),
-    predictions: function () {
-      let result = [];
-      for (let pr of this.$store.state.predictions) {
-        pr.probability = Math.round(pr.probability * 100);
-        pr.result = pr.result.split("_").join(" ").toLowerCase();
-        result.push(pr);
-      }
-      return result;
-    },
+    ...mapState(["flight", "error", "loading", "predictions"]),
   },
   watch: {
     flight: {
