@@ -17,12 +17,22 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.card {
+  @apply bg-gray-900 rounded-2xl shadow-2xl mx-2 p-4;
+}
+
 .slide-down-enter-from {
   opacity: 0;
   transform: translateY(-50px);
 }
 
-.slide-down-enter-active {
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.slide-down-enter-active,
+.slide-right-enter-active {
   transition: all 1s ease-out;
 }
 </style>
