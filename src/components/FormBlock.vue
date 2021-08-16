@@ -4,24 +4,33 @@
       Enter your flight data
     </div>
     <div class="flex space-x-3 justify-center">
-      <base-input type="text" placeholder="AZ" v-model="searched.carrierCode"
-        >Carrier Code</base-input
-      >
-      <base-input type="text" placeholder="1234" v-model="searched.flightNumber"
-        >Flight Number</base-input
-      >
+      <base-input
+        type="text"
+        placeholder="AZ"
+        v-model="searched.carrierCode"
+        :label="'Carrier Code'"
+      />
+      <base-input
+        type="text"
+        placeholder="1234"
+        v-model="searched.flightNumber"
+        :label="'Flight Number'"
+      />
     </div>
     <div class="mt-5 flex space-x-3 justify-center">
       <base-input
-      class="flex-1"
-        type="date"
+        :date="true"
         v-model="searched.scheduledDepartureDate"
-        >Departure Date</base-input
-      >
+        :label="'Departure Date'"
+      />
+
       <!-- v-model="searched.operationalSuffix" -->
-      <base-input class="flex-1" type="text" placeholder="not implemented yet" disabled
-        >Delay Code</base-input
-      >
+      <base-input
+        type="text"
+        placeholder="not implemented yet"
+        disabled
+        :label="'Delay Code'"
+      />
     </div>
   </form>
 </template>
