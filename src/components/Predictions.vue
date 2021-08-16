@@ -19,6 +19,7 @@
       <div
         v-for="(pred, $index) in predictions"
         :key="$index"
+        :id="$index"
         class="flex space-x-2 py-2 card"
       >
         <span class="w-8 h-8 self-center inline-block flex-shrink-0"
@@ -70,7 +71,6 @@ export default {
   computed: {},
   methods: {
     beforeEnter: function (el) {
-      
       Velocity(el, { opacity: 0, translateX: "-50px" });
     },
     enter: function (el, done) {
@@ -78,9 +78,9 @@ export default {
         Velocity(
           el,
           { opacity: 1, translateX: "0px" },
-          { duration: 700, complete: done, easing: 'easeOutCubic'  }
+          { duration: 700, complete: done, easing: "easeOutCubic" }
         );
-      }, el.__vnode.key * 700);
+      }, Number(el.id) * 700);
     },
   },
 };
