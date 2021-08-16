@@ -1,9 +1,9 @@
 <template>
-  <form class="bg-gray-900 rounded-2xl shadow-2xl mx-2 p-4">
-    <div class="block mb-6 font-bold text-center text-xl">
+  <form class="bg-gray-900 flex flex-col justify-evenly rounded-2xl shadow-2xl mx-2 p-4">
+    <div class="block  mb-6 font-bold text-center text-xl">
       Enter your flight data
     </div>
-    <div class="flex space-x-3 justify-center">
+    <div class="flex  space-x-3 justify-center">
       <base-input
         type="text"
         placeholder="AZ"
@@ -17,10 +17,11 @@
         :label="'Flight Number'"
       />
     </div>
-    <div class="mt-5 flex space-x-3 justify-center">
+    <div class="mt-5 sel flex space-x-3 justify-center">
       <base-input
         :date="true"
         v-model="searched.scheduledDepartureDate"
+        placeholder="05/08/2021"
         :label="'Departure Date'"
       />
 
