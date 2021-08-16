@@ -6,7 +6,10 @@
     <input
       :="$attrs"
       :value="modelValue"
-      @change="this.$emit('update:modelValue', $event.target.value)"
+      @change="
+        $event.target.blur();
+        this.$emit('update:modelValue', $event.target.value);
+      "
       class="
         block
         mt-1
@@ -25,6 +28,7 @@
 <script>
 export default {
   props: ["modelValue"],
+  methods: {},
 };
 </script>
 
