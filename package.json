@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^1.0.3",
+    "@popperjs/core": "^2.9.3",
     "@tailwindcss/forms": "^0.3.3",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
