@@ -71,7 +71,6 @@ export default {
       default: "",
     },
   },
-  data() {},
   methods: {
     formatAndEmit(e) {
       this.$emit("update:modelValue", dateToString(e));

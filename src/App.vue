@@ -33,6 +33,6 @@ export default {
 }
 .slide-down-enter-active,
 .slide-right-enter-active {
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
 }
 </style>
