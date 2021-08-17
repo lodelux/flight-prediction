@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-2 w-full mt-7 sm:m-0 sm:w-5/12">
+  <div class="mx-2 w-full my-7 sm:m-0 sm:w-5/12">
     <div v-if="loading" class="w-full flex justify-center mt-10">
       <base-loading class="w-14" />
     </div>

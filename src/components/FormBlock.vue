@@ -1,20 +1,30 @@
 <template>
-  <form class="bg-gray-900 flex flex-col justify-evenly rounded-2xl shadow-2xl mx-2 p-4">
-    <div class="block  mb-6 font-bold text-center text-xl">
+  <form
+    class="
+      bg-gray-900
+      flex flex-col
+      justify-evenly
+      rounded-2xl
+      shadow-2xl
+      mx-2
+      p-4
+    "
+  >
+    <div class="block mb-6 font-bold text-center text-xl">
       Enter your flight data
     </div>
-    <div class="flex  space-x-3 justify-center">
+    <div class="flex space-x-3 justify-center">
       <base-input
         type="text"
         placeholder="AZ"
         v-model="searched.carrierCode"
-        :label="'Carrier Code'"
+        :label="'Carrier Code *'"
       />
       <base-input
         type="text"
         placeholder="1234"
         v-model="searched.flightNumber"
-        :label="'Flight Number'"
+        :label="'Flight Number *'"
       />
     </div>
     <div class="mt-5 sel flex space-x-3 justify-center">
@@ -22,7 +32,7 @@
         :date="true"
         v-model="searched.scheduledDepartureDate"
         placeholder="05/08/2021"
-        :label="'Departure Date'"
+        :label="'Departure Date *'"
       />
 
       <!-- v-model="searched.operationalSuffix" -->
@@ -63,6 +73,7 @@ export default {
   watch: {
     searched: {
       handler(_searched) {
+        _searched.carrierCode = _searched.carrierCode.toUpperCase();
         let filled = true;
         for (let key in _searched) {
           if (key != "operationalSuffix" && !_searched[key]) {

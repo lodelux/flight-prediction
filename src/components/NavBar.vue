@@ -34,7 +34,7 @@ export default {
         },
         {
           name: "About",
-          viewName: "About",
+          viewName: "Home",
         },
       ],
     };
