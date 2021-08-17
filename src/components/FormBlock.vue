@@ -16,13 +16,13 @@
     <div class="flex space-x-3 justify-center">
       <base-input
         type="text"
-        placeholder="AZ"
+        placeholder="SU"
         v-model="searched.carrierCode"
         :label="'Carrier Code *'"
       />
       <base-input
         type="text"
-        placeholder="1234"
+        placeholder="6674"
         v-model="searched.flightNumber"
         :label="'Flight Number *'"
       />
@@ -31,14 +31,14 @@
       <base-input
         :date="true"
         v-model="searched.scheduledDepartureDate"
-        placeholder="05/08/2021"
+        placeholder="08/28/2021"
         :label="'Departure Date *'"
       />
 
       <!-- v-model="searched.operationalSuffix" -->
       <base-input
         type="text"
-        placeholder="not implemented yet"
+        placeholder=""
         disabled
         :label="'Delay Code'"
       />

@@ -62,7 +62,7 @@ export default {
   components: { DatePicker },
   props: {
     modelValue: {
-      required: true,
+      default: '',
     },
     date: {
       default: false,
