@@ -36,12 +36,7 @@
       />
 
       <!-- v-model="searched.operationalSuffix" -->
-      <base-input
-        type="text"
-        placeholder=""
-        disabled
-        :label="'Delay Code'"
-      />
+      <base-input type="text" placeholder="" disabled :label="'Delay Code'" />
     </div>
   </form>
 </template>

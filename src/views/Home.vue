@@ -3,7 +3,7 @@
     <form-block />
     <prediction-block />
   </div>
-  <div class="p-2 pb-6 mt-3 md:mt-8 w-full ">
+  <div class="p-2 pb-6 mt-3 md:mt-8 w-full">
     <h1 class="font-bold text-2xl md:text-4xl text-center">
       How does it work?
     </h1>
