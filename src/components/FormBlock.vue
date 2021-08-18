@@ -34,9 +34,39 @@
         placeholder="08/28/2021"
         :label="'Departure Date *'"
       />
-
-      <!-- v-model="searched.operationalSuffix" -->
-      <base-input type="text" placeholder="" disabled :label="'Delay Code'" />
+      <div
+        key="checkbox"
+        v-if="!delayed"
+        class="
+          border-0
+          p-0
+          flex-1
+          self-center
+          h-full
+          flex
+          space-x-3
+          items-end
+          pb-3
+          justify-center
+        "
+      >
+        <input
+          class="inline-block mb-1 rounded"
+          type="checkbox"
+          v-model="delayed"
+        />
+        <label class="inline-block">Delayed flight?</label>
+      </div>
+      <div v-if="delayed" key="inputbox" class="flex-1 self-center h-full">
+        <base-input
+          key="input"
+          v-model="searched.operationalSuffix"
+          type="text"
+          placeholder=""
+          :label="'Delay Code'"
+          ><input type="checkbox" class="rounded" v-model="delayed" />
+        </base-input>
+      </div>
     </div>
   </form>
 </template>
@@ -48,11 +78,12 @@ export default {
   components: { BaseInput },
   data() {
     return {
+      delayed: false,
       searched: {
         carrierCode: "",
         flightNumber: "",
         scheduledDepartureDate: "",
-        // operationalSuffix: "",
+        operationalSuffix: null,
       },
     };
   },
@@ -62,6 +93,7 @@ export default {
         carrierCode: "",
         flightNumber: "",
         scheduledDepartureDate: "",
+        operationalSuffix: null,
       };
     },
   },
@@ -71,12 +103,19 @@ export default {
         _searched.carrierCode = _searched.carrierCode.toUpperCase();
         let filled = true;
         for (let key in _searched) {
-          if (key != "operationalSuffix" && !_searched[key]) {
+          if (
+            (key != "operationalSuffix" && !_searched[key]) ||
+            (key === "operationalSuffix" && this.delayed && !_searched[key])
+          ) {
             filled = false;
           }
         }
         if (filled) {
-          this.$store.dispatch("getFlight", _searched);
+          let formToSend = _searched;
+          if (!this.delayed) {
+            delete formToSend.operationalSuffix;
+          }
+          this.$store.dispatch("getFlight", formToSend);
           //temporary workaround for reset Bug
           sleep(1).then(() => {
             this.resetForm();

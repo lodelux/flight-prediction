@@ -2,6 +2,7 @@
   <div class="bg-transparent border-0 p-0 flex-1">
     <label class="block text-center font-medium">
       {{ label }}
+      <slot />
     </label>
     <input
       v-if="!date"

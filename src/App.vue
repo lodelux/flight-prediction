@@ -35,4 +35,12 @@ export default {
 .slide-right-enter-active {
   transition: all 0.5s ease-out;
 }
+
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 0.3s ease 1s;
+  
+}
 </style>
