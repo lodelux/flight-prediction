@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-3 p-6 bg-gray-900 rounded-xl shadow-xl mt-7 md:mt-20">
+  <div class="mx-3 p-6 bg-gray-900 rounded-xl shadow-xl mt-7 md:mt-20 text-center">
     <h1 class="text-2xl font-bold text-center">How does it work</h1>
     <p class="mt-6">
       This website uses an API service from amadeus.com both to find the flight

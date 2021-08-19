@@ -18,13 +18,13 @@
         type="text"
         placeholder="SU"
         v-model="searched.carrierCode"
-        :label="'Carrier Code *'"
+        :label="'Carrier Code '"
       />
       <base-input
         type="text"
         placeholder="6674"
         v-model="searched.flightNumber"
-        :label="'Flight Number *'"
+        :label="'Flight Number '"
       />
     </div>
     <div class="mt-5 sel flex space-x-3 justify-center">
@@ -32,7 +32,7 @@
         :date="true"
         v-model="searched.scheduledDepartureDate"
         placeholder="08/28/2021"
-        :label="'Departure Date *'"
+        :label="'Departure Date '"
       />
       <div
         key="checkbox"
