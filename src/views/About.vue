@@ -15,15 +15,8 @@
     <h1 class="text-2xl font-bold text-center mt-12">Website</h1>
     <p class="mt-6">
       This website was developed in around 2 weeks as a small side project
-      mainly to learn some frontend developing, its completely open source and
-      you can find it
-      <a
-        class="underline text-green-300"
-        target="_blank"
-        href="https://github.com/lodelux/flight-prediction"
-      >
-        here</a
-      >
+      mainly to learn some frontend developing thus it has many problems and many
+      things that can still be added or improved
     </p>
     <h1 class="text-2xl font-bold text-center mt-12">Feedbacks & Contacts</h1>
     <p class="mt-6">
