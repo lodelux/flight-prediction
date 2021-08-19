@@ -20,7 +20,7 @@ const handler = async function (event) {
       `grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}`
     );
     const result = {
-      acces_token: data.acces_token,
+      access_token: data.access_token,
       expires_in: data.expires_in,
     };
     return {
