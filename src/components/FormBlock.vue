@@ -97,7 +97,6 @@ export default {
       };
     },
     validateAndSend() {
-      this.searched.carrierCode = this.searched.carrierCode.toUpperCase();
       let filled = true;
       for (let key in this.searched) {
         if (
@@ -108,7 +107,8 @@ export default {
         }
       }
       if (filled) {
-        let formToSend = this.searched;
+        let formToSend = { ...this.searched };
+        formToSend.carrierCode = formToSend.carrierCode.toUpperCase();
         if (!this.delayed) {
           delete formToSend.operationalSuffix;
         }
@@ -122,7 +122,8 @@ export default {
   },
   watch: {
     searched: {
-      handler() {
+      handler(_searched) {
+        console.log(_searched);
         this.validateAndSend();
       },
       deep: true,
