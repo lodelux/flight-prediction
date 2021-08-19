@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const OAUTH_URL = "https://test.api.amadeus.com/v1/security/oauth2/token";
+const OAUTH_URL =
+  window.location.origin + "/.netlify/functions/amadeusGetToken";
 const BASE_URL = "https://test.api.amadeus.com";
-const API_KEY = "pWedLWD5wiKGOIeDT8jUlUkILIDKvbYg";
-const API_SECRET = "zs4nmLEIM3z0AmnS";
 
 const max_retries = 10;
 
@@ -21,10 +20,7 @@ let TOKEN = {
 export const getToken = async (retry = 0, maxRetries = max_retries) => {
   if (!TOKEN.value || TOKEN.is_expired()) {
     return axios
-      .post(
-        OAUTH_URL,
-        `grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}`
-      )
+      .get(OAUTH_URL)
       .catch((error) => {
         console.log(error);
         retry += 1;
