@@ -96,33 +96,39 @@ export default {
         operationalSuffix: null,
       };
     },
+    validateAndSend() {
+      this.searched.carrierCode = this.searched.carrierCode.toUpperCase();
+      let filled = true;
+      for (let key in this.searched) {
+        if (
+          (key != "operationalSuffix" && !this.searched[key]) ||
+          (key === "operationalSuffix" && this.delayed && !this.searched[key])
+        ) {
+          filled = false;
+        }
+      }
+      if (filled) {
+        let formToSend = this.searched;
+        if (!this.delayed) {
+          delete formToSend.operationalSuffix;
+        }
+        this.$store.dispatch("getFlight", formToSend);
+        //temporary workaround for reset Bug
+        sleep(1).then(() => {
+          this.resetForm();
+        });
+      }
+    },
   },
   watch: {
     searched: {
-      handler(_searched) {
-        _searched.carrierCode = _searched.carrierCode.toUpperCase();
-        let filled = true;
-        for (let key in _searched) {
-          if (
-            (key != "operationalSuffix" && !_searched[key]) ||
-            (key === "operationalSuffix" && this.delayed && !_searched[key])
-          ) {
-            filled = false;
-          }
-        }
-        if (filled) {
-          let formToSend = _searched;
-          if (!this.delayed) {
-            delete formToSend.operationalSuffix;
-          }
-          this.$store.dispatch("getFlight", formToSend);
-          //temporary workaround for reset Bug
-          sleep(1).then(() => {
-            this.resetForm();
-          });
-        }
+      handler() {
+        this.validateAndSend();
       },
       deep: true,
+    },
+    delayed: function () {
+      this.validateAndSend();
     },
   },
 };
