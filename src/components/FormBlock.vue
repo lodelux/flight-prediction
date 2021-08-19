@@ -122,8 +122,7 @@ export default {
   },
   watch: {
     searched: {
-      handler(_searched) {
-        console.log(_searched);
+      handler() {
         this.validateAndSend();
       },
       deep: true,

@@ -4,8 +4,6 @@ const OAUTH_URL =
   window.location.origin + "/.netlify/functions/amadeusGetToken";
 const BASE_URL = "https://test.api.amadeus.com";
 
-const max_retries = 10;
-
 let TOKEN = {
   is_expired: () => {
     return (
@@ -17,13 +15,12 @@ let TOKEN = {
 
 //manually tested, TOKEN good  ? return TOKEN : (retrieve TOKEN and return TOKEN)
 //if error, logs it and retries immediatly for max_retries times
-export const getToken = async (retry = 0, maxRetries = max_retries) => {
+export const getToken = async () => {
   if (!TOKEN.value || TOKEN.is_expired()) {
     return axios
       .get(OAUTH_URL, { timeout: 2000 })
       .catch((error) => {
-        console.log(error);
-        retry += 1;
+        throw error;
       })
       .then((res) => {
         return (TOKEN = {
@@ -32,13 +29,6 @@ export const getToken = async (retry = 0, maxRetries = max_retries) => {
           expires_in: res.data.expires_in,
           creation_time: new Date(),
         });
-      })
-      .finally(() => {
-        if (retry && retry <= maxRetries) {
-          return getToken(retry, maxRetries);
-        } else {
-          return;
-        }
       });
   } else {
     return TOKEN;
@@ -55,19 +45,23 @@ export const getToken = async (retry = 0, maxRetries = max_retries) => {
 
 //validate token or get new one then search for flight and return an error or the response data, MANUALLY TESTED
 export async function searchFlight(flight) {
-  return getToken().then(() => {
-    return axios
-      .get(BASE_URL + "/v2/schedule/flights", {
-        headers: { Authorization: `Bearer ${TOKEN.value}` },
-        params: flight,
-      })
-      .catch((err) => {
-        throw err;
-      })
-      .then((res) => {
-        return res.data;
-      });
-  });
+  return getToken()
+    .then(() => {
+      return axios
+        .get(BASE_URL + "/v2/schedule/flights", {
+          headers: { Authorization: `Bearer ${TOKEN.value}` },
+          params: flight,
+        })
+        .catch((err) => {
+          throw err;
+        })
+        .then((res) => {
+          return res.data;
+        });
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 
 //manually tested, validate TOKEN then get and return flight delay predictions, if error throws it
@@ -86,17 +80,21 @@ export async function searchFlight(flight) {
   },
 */
 export async function searchPrediction(flight) {
-  return getToken().then(() => {
-    return axios
-      .get(BASE_URL + "/v1/travel/predictions/flight-delay", {
-        params: flight,
-        headers: { Authorization: `Bearer ${TOKEN.value}` },
-      })
-      .catch((error) => {
-        throw error;
-      })
-      .then((res) => {
-        return res.data;
-      });
-  });
+  return getToken()
+    .then(() => {
+      return axios
+        .get(BASE_URL + "/v1/travel/predictions/flight-delay", {
+          params: flight,
+          headers: { Authorization: `Bearer ${TOKEN.value}` },
+        })
+        .catch((error) => {
+          throw error;
+        })
+        .then((res) => {
+          return res.data;
+        });
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
