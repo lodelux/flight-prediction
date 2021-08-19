@@ -20,7 +20,7 @@ let TOKEN = {
 export const getToken = async (retry = 0, maxRetries = max_retries) => {
   if (!TOKEN.value || TOKEN.is_expired()) {
     return axios
-      .get(OAUTH_URL)
+      .get(OAUTH_URL, { timeout: 2000 })
       .catch((error) => {
         console.log(error);
         retry += 1;

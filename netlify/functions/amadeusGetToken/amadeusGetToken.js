@@ -19,9 +19,13 @@ const handler = async function (event) {
       OAUTH_URL,
       `grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}`
     );
+    const result = {
+      acces_token: data.acces_token,
+      expires_in: data.expires_in,
+    };
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify(result),
     };
   } catch (error) {
     const { status, statusText, headers, data } = error.response;
