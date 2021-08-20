@@ -1,2 +1,3 @@
+Sitemap: https://www.willigetdelayed.com/sitemap.xml
 User-agent:*
 Disallow:

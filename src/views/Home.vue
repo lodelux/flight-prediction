@@ -24,14 +24,13 @@
         <p class="block mt-2">
           we use industry-leading AI tools to compare your flight with the ones
           in the database and calculate delay predictions for your flight, with
-          an accuracy of up to 98%! You can read more about it in the 
+          an accuracy of up to 98%! You can read more about it in the
           <a
             class="underline text-green-300"
-            target="_blank"
             href="https://www.willigetdelayed.com/about"
-          > About page
-            </a
           >
+            About page
+          </a>
         </p>
       </li>
     </ul>
