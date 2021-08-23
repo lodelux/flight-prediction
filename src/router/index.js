@@ -13,6 +13,7 @@ const routes = [
     name: "About",
     component: About,
   },
+  //redirect all unknown paths to the home
   {
     path: "/:pathMatch(.*)*",
     redirect: { name: "Home" },

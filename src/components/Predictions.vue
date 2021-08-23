@@ -65,11 +65,12 @@ export default {
   props: ["flight", "predictions"],
   data() {
     return {
+      //threshold for color of probability
       probThresh: 30,
     };
   },
-  computed: {},
   methods: {
+    //methods for staggering animation
     beforeEnter: function (el) {
       Velocity(el, { opacity: 0, translateX: "-50px" });
     },

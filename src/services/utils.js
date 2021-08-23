@@ -1,7 +1,9 @@
+//async sleep
 export function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+//format from Date to yyyy-mm-dd
 export function dateToString(d) {
   let month = "" + (d.getMonth() + 1);
   let day = "" + d.getDate();

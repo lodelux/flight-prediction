@@ -18,13 +18,13 @@
         type="text"
         placeholder="SU"
         v-model="searched.carrierCode"
-        :label="'Carrier Code '"
+        :label="'Carrier Code'"
       />
       <base-input
         type="text"
         placeholder="6674"
         v-model="searched.flightNumber"
-        :label="'Flight Number '"
+        :label="'Flight Number'"
       />
     </div>
     <div class="mt-5 sel flex space-x-3 justify-center">
@@ -32,7 +32,7 @@
         :date="true"
         v-model="searched.scheduledDepartureDate"
         placeholder="08/28/2021"
-        :label="'Departure Date '"
+        :label="'Departure Date'"
       />
       <div
         key="checkbox"
@@ -88,6 +88,7 @@ export default {
     };
   },
   methods: {
+    //resets all inputs
     resetForm() {
       this.searched = {
         carrierCode: "",
@@ -96,9 +97,11 @@ export default {
         operationalSuffix: null,
       };
     },
+    //carrier code to upper, check if all inputs are fille and submit
     validateAndSend() {
       let filled = true;
       for (let key in this.searched) {
+        //if not all inputs are filled, then filled is false
         if (
           (key != "operationalSuffix" && !this.searched[key]) ||
           (key === "operationalSuffix" && this.delayed && !this.searched[key])
@@ -107,6 +110,7 @@ export default {
         }
       }
       if (filled) {
+        //tmp or it will overwrite the original object
         let formToSend = { ...this.searched };
         formToSend.carrierCode = formToSend.carrierCode.toUpperCase();
         if (!this.delayed) {

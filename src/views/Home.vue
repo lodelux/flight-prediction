@@ -3,6 +3,7 @@
     <form-block />
     <prediction-block />
   </div>
+  <!-- instructions cards -->
   <div class="p-2 pb-6 mt-3 md:mt-8 w-full text-center">
     <h1 class="font-bold text-2xl md:text-3xl">
       How to get predictions for the probabilities of your flight being delayed

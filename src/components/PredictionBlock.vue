@@ -1,4 +1,5 @@
 <template>
+  <!-- load only if it's needed -->
   <div
     v-if="predictions[0] || loading || (error && !close)"
     class="mx-2 w-full mt-7 sm:m-0 sm:w-5/12"
@@ -84,7 +85,7 @@ export default {
           return "an error has occurred while searching for your flight, check if your input is correct or try again later ";
 
         case "prediction":
-          return "an error has occurred while trying to get predictions for your flight, check if your input is correct or try again later pls";
+          return "an error has occurred while trying to get predictions for your flight, check if your input is correct or try again later please";
 
         case "no flight":
           return "no flight found with specified data, please note that not all flights are supported yet";

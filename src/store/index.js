@@ -10,11 +10,13 @@ export default createStore({
     predictions: "",
   },
   mutations: {
+    //set any state property
     SET_STATE(state, { key, value }) {
       state[key] = value;
     },
   },
   actions: {
+    //reset state -> set loading -> searchFlight call.then(set correct flight for prediction call).catch(set error && not loading)
     getFlight({ commit }, _searched) {
       commit("SET_STATE", { key: "flight", value: "" });
       commit("SET_STATE", { key: "error", value: "" });
@@ -59,6 +61,7 @@ export default createStore({
           return;
         });
     },
+    //reset state -> searchPrediction.then(set predictions && not loading).catch(set error && not loading)
     getPredictions({ commit }, _flight) {
       commit("SET_STATE", { key: "predictions", value: "" });
       commit("SET_STATE", { key: "error", value: "" });
@@ -87,5 +90,4 @@ export default createStore({
       }
     },
   },
-  modules: {},
 });
