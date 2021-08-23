@@ -7,7 +7,7 @@ const OAUTH_URL = "https://test.api.amadeus.com/v1/security/oauth2/token";
 const handler = async function (event) {
   // Get env var values defined in our Netlify site UI
 
-  // TODO: customize your URL and API keys set in the Netlify Dashboard
+  // TODO: custo:mize your URL and API keys set in the Netlify Dashboard
   // this is secret too, your frontend won't see this
   const {
     API_SECRET = "zs4nmLEIM3z0AmnS",
@@ -15,6 +15,7 @@ const handler = async function (event) {
   } = process.env;
 
   try {
+    console.log(Date(), "get Token");
     const { data } = await axios.post(
       OAUTH_URL,
       `grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}`
