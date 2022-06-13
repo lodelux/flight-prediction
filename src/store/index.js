@@ -62,7 +62,11 @@ const TEST_FLIGHT = {
   ],
 };
 
-const TEST_SEARCHED = {};
+const TEST_SEARCHED = {
+  "carrierCode": "FR",
+  "flightNumber": "1303",
+  "scheduledDepartureDate": "2022-07-01"
+};
 const TEST_PREDICTIONS = {
   data: [
     {

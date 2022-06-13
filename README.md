@@ -1,5 +1,13 @@
 # predictor_app
 
+# Test flight 
+
+  "carrierCode": "FR",
+  "flightNumber": "1303",
+  "scheduledDepartureDate": "2022-07-01"
+
+
+
 ## Project setup
 ```
 npm install
