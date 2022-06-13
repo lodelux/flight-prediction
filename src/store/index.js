@@ -124,7 +124,7 @@ export default createStore({
       commit("SET_STATE", { key: "flight", value: "" });
       commit("SET_STATE", { key: "error", value: "" });
       commit("SET_STATE", { key: "loading", value: true });
-      if (_searched == TEST_SEARCHED) {
+        if (_searched == TEST_SEARCHED) {
         let res = TEST_FLIGHT;
         if (res.meta.count) {
           res = res.data;
