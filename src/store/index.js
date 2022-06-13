@@ -63,9 +63,9 @@ const TEST_FLIGHT = {
 };
 
 const TEST_SEARCHED = {
-  "carrierCode": "FR",
-  "flightNumber": "1303",
-  "scheduledDepartureDate": "2022-07-01"
+  carrierCode: "FR",
+  flightNumber: "1303",
+  scheduledDepartureDate: "2022-07-01",
 };
 const TEST_PREDICTIONS = {
   data: [
@@ -124,8 +124,10 @@ export default createStore({
       commit("SET_STATE", { key: "flight", value: "" });
       commit("SET_STATE", { key: "error", value: "" });
       commit("SET_STATE", { key: "loading", value: true });
-        if (_searched == TEST_SEARCHED) {
+      console.log(_searched, TEST_SEARCHED);
+      if (_searched == TEST_SEARCHED) {
         let res = TEST_FLIGHT;
+        console.log(1);
         if (res.meta.count) {
           res = res.data;
           commit("SET_STATE", {
