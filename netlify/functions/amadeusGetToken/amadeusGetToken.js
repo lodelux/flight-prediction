@@ -9,16 +9,12 @@ const handler = async function (event) {
 
   // TODO: custo:mize your URL and API keys set in the Netlify Dashboard
   // this is secret too, your frontend won't see this
-  const {
-    API_SECRET = "zs4nmLEIM3z0AmnS",
-    API_KEY = "pWedLWD5wiKGOIeDT8jUlUkILIDKvbYg",
-  } = process.env;
 
   try {
     console.log(Date(), "get Token");
     const { data } = await axios.post(
       OAUTH_URL,
-      `grant_type=client_credentials&client_id=${API_KEY}&client_secret=${API_SECRET}`
+      `grant_type=client_credentials&client_id=${process.env.API_KEY}&client_secret=${process.env.API_SECRET}`
     );
     const result = {
       access_token: data.access_token,
