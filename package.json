@@ -15,6 +15,7 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "dotenv": "^16.0.1",
     "qs": "^6.10.1",
     "v-calendar": "^3.0.0-alpha.5",
     "velocity-animate": "^1.5.2",
