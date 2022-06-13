@@ -16,13 +16,13 @@
     <div class="flex space-x-3 justify-center">
       <base-input
         type="text"
-        placeholder="SU"
+        placeholder="FR"
         v-model="searched.carrierCode"
         :label="'Carrier Code'"
       />
       <base-input
         type="text"
-        placeholder="6674"
+        placeholder="1303"
         v-model="searched.flightNumber"
         :label="'Flight Number'"
       />
@@ -31,7 +31,7 @@
       <base-input
         :date="true"
         v-model="searched.scheduledDepartureDate"
-        placeholder="08/28/2021"
+        placeholder="01/07/2022"
         :label="'Departure Date'"
       />
       <div
