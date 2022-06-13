@@ -63,6 +63,44 @@ const TEST_FLIGHT = {
 };
 
 const TEST_SEARCHED = {};
+const TEST_PREDICTIONS = {
+  data: [
+    {
+      id: "FR1303NAPCRL20220701",
+      probability: "0.49566263",
+      result: "LESS_THAN_30_MINUTES",
+      subType: "flight-delay",
+      type: "prediction",
+    },
+    {
+      id: "FR1303NAPCRL20220701",
+      probability: "0.25009775",
+      result: "BETWEEN_30_AND_60_MINUTES",
+      subType: "flight-delay",
+      type: "prediction",
+    },
+    {
+      id: "FR1303NAPCRL20220701",
+      probability: "0.16390955",
+      result: "BETWEEN_60_AND_120_MINUTES",
+      subType: "flight-delay",
+      type: "prediction",
+    },
+    {
+      id: "FR1303NAPCRL20220701",
+      probability: "0.090330094",
+      result: "OVER_120_MINUTES_OR_CANCELLED",
+      subType: "flight-delay",
+      type: "prediction",
+    },
+  ],
+  meta: {
+    count: 4,
+    links: {
+      self: "https://test.api.amadeus.com/v1/travel/predictions/flight-delay?originLocationCode=NAP\u0026destinationLocationCode=CRL\u0026departureDate=2022-07-01\u0026departureTime=09:40:00\u0026arrivalDate=2022-07-01\u0026arrivalTime=12:00:00\u0026aircraftCode=738\u0026carrierCode=FR\u0026flightNumber=1303\u0026duration=PT2H20M",
+    },
+  },
+};
 export default createStore({
   state: {
     flight: "",
