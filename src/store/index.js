@@ -119,7 +119,6 @@ export default createStore({
       commit("SET_STATE", { key: "flight", value: "" });
       commit("SET_STATE", { key: "error", value: "" });
       commit("SET_STATE", { key: "loading", value: true });
-      console.log(_searched, TEST_SEARCHED);
       if (_searched.carrierCode == "FR" && _searched.flightNumber == "1303") {
         let res = TEST_FLIGHT;
         console.log("TEST FLIGHT!");
