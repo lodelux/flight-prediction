@@ -1,5 +1,7 @@
 # predictor_app
 
+live version at https://delay.netlify.app/ you can use test flight below to see functionality
+
 # Test flight 
 
   "carrierCode": "FR",
